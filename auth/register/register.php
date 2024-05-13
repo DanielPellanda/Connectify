@@ -1,0 +1,174 @@
+<?php
+
+// Initialize required components
+require_once '../../init.php';
+require_once $cfg->GetAbsolutePath('registerhelp');
+
+// Form POST keys
+$username_key = 'username';
+$firstname_key = 'name';
+$surname_key = 'surname';
+$password_key = 'password';
+$confirm_password_key = 'confirm';
+
+// String localizer
+$strings = array(
+	'login_box_msg'=>'Crea un nuovo account',
+	'remember_me'=>'Rimani Collegato',
+	
+	'sign_up'=>'Registrati',
+	'sign_in_href'=>'Sei già registrato?',
+
+	'placeholder_username'=>'Username',
+	'placeholder_firstname'=>'Nome',
+	'placeholder_surname'=>'Cognome',
+	'placeholder_password'=>'Password',
+	'placeholder_confirm_password'=>'Conferma Password',
+
+	'missing_username'=>'Inserire un username.',
+	'missing_firstname'=>'Inserire un nome.',
+	'missing_surname'=>'Inserire un cognome.',
+	'missing_password'=>'Inserire una password.',
+
+	'error_username'=>"È già presente un account con quell'username.",
+	'error_username_long'=>"L'username inserito non può essere lungo più di ".$username_max_length." caratteri.",
+	'error_firstname_long'=>'IL nome inserito non può essere lungo più di '.$username_max_length.' caratteri.',
+	'error_surname_long'=>'Il cognome inserito non può essere lungo più di '.$username_max_length.' caratteri.',
+	'error_password_long'=>'La password inserita non può essere lunga più di '.$password_max_length.' caratteri.',
+	'error_password_short'=>'La password inserita non può essere lunga meno di '.$password_min_length.' caratteri.',
+	'error_password_case'=>'La password inserita deve contenere almeno un carattere maiuscolo (A) e minuscolo (a).',
+	'error_password_number'=>'La password inserita deve contenere almeno un numero.',
+	'error_password_schar'=>'La password inserita deve contenere almeno un carattere speciale ( [\'^£$%&*()}{@#~?><>,|=_+¬-] ).',
+	'error_confirm_password'=>'La due password inserite non coincidono.',
+	'error_generic'=>'Oops! Qualcosa è andato storto. Per favore riprova più tardi.',
+	'success'=>'Account creato con successo!',
+);
+
+// Link paths
+$hrefs = array(
+	'login_logo'=>'',
+	'sign_in'=>$cfg->GetURL('login'),
+);
+
+$cfg->auth->ResetCookies();
+
+unset($error);
+// Processing form data when form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+	
+	// Validate request
+	$status = RegisterNewAccount($username_key, $password_key, $confirm_password_key, $firstname_key, $surname_key);
+	
+	// Assigns the error message to show under the form.
+	$error = match ($status) {
+		ExitCode::Success => null,
+		
+		// Don't output an error message when submitting an empty username,
+		// otherwise it will show up everytime the page is reloaded.
+		//ExitCode::ErrEmptyUsername => $strings['missing_username'],
+		ExitCode::ErrEmptyUsername => null,
+		
+		ExitCode::ErrEmptyPassword => $strings['missing_password'],
+		ExitCode::ErrEmptyFirstname => $strings['missing_firstname'],
+		ExitCode::ErrEmptySurname => $strings['missing_surname'],
+		ExitCode::ErrExistsUsername => $strings['error_username'],
+		ExitCode::ErrLongUsername => $strings['error_username_long'],
+		ExitCode::ErrLongFirstname => $strings['error_firstname_long'],
+		ExitCode::ErrLongSurname => $strings['error_surname_long'],
+		ExitCode::ErrLongPassword => $strings['error_password_long'],
+		ExitCode::ErrShortPassword => $strings['error_password_short'],
+		ExitCode::ErrCasePassword => $strings['error_password_case'],
+		ExitCode::ErrNumberPassword => $strings['error_password_number'],
+		ExitCode::ErrScharPassword => $strings['error_password_schar'],
+		ExitCode::ErrConfirmPassword => $strings['error_confirm_password'],
+		
+		default => $strings['error_generic'],
+	};
+
+	if ($status == ExitCode::Success){
+		$cfg->Redirect($cfg->GetURL('login'));
+	}
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?php $cfg->PrintHeadTitle('Register') ?>
+  <?php $cfg->IncludeStylesheets() ?>
+</head>
+<body class="register-page">
+<div class="register-box">
+  <div class="register-logo">
+    <a href="<?php echo $hrefs['login_logo'] ?>"><b><?php echo $cfg->GetFormattedTitle() ?></b></a>
+  </div>
+
+  <div class="card">
+    <div class="card-body register-card-body">
+      <p class="login-box-msg"><?php echo $strings['login_box_msg'] ?></p>
+
+      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+        <div class="input-group mb-3">
+          <input type="text" name="<?php echo $username_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_username'] ?>">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+		<div class="input-group mb-3">
+          <input type="text" name="<?php echo $firstname_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_firstname'] ?>">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+		<div class="input-group mb-3">
+          <input type="text" name="<?php echo $surname_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_surname'] ?>">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" name="<?php echo $password_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_password'] ?>">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" name="<?php echo $confirm_password_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_confirm_password'] ?>">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+		<?php 
+			if (!empty($error)) {
+				echo '<p class="text-danger">'.$error.'</p>';
+			}
+			else if (isset($status) && $status == ExitCode::Success) {
+				echo '<p class="text-success">'.$strings['success'].'</p>';
+			}
+		?>
+        <div class="row">
+          <div class="col-8">
+			<a href="<?php echo $hrefs['sign_in'] ?>" class="text-center"><?php echo $strings['sign_in_href'] ?></a>
+          </div>
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block"><?php echo $strings['sign_up'] ?></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
