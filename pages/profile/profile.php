@@ -102,7 +102,7 @@ $strings = array(
                         if ($_SESSION['userid'] == $userid) {
                           echo '
                           <div class="col-4 col-lg-4">
-                            <a href="'.$cfg->GetURL('modifyprofile').'" class="btn btn-success btn-block">
+                            <a href="'.$cfg->GetURL('modifyprofile').'" class="btn btn-primary btn-block">
                             <i class="fa-solid fa-pencil"></i> '.$strings['modify_profile'].' </a>
                           </div>
                           <div class="col-4 col-lg-4">

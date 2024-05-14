@@ -13,22 +13,26 @@ $surname_key = 'surname';
 $password_key = 'password';
 $biography_key = 'bio';
 $profile_picture_key = 'pic';
+$email_key = 'email';
 
 //Forms field ids
 $ids = array (
 	'username' => 'chgUsername',
+  'email' => 'chgEmail',
 	'firstname' => 'chgFname',
 	'surname' => 'chgSname',
 	'password' => 'chgPw',
   'confirm_password' => 'confirmPw',
 	'biography' => 'chgBio',
-	'pic' => 'chgImg',
+	'cpic' => 'chgImg',
+	'upic' => 'upImg',
 );
 
 $strings = array(
 	'alt_pfp' => 'Immagine di Profilo',
   'header' => ' Modifica ',
   'username' => 'Nome utente',
+  'email' => 'E-mail',
   'password' => 'Cambia password',
   'confirm_password' => 'Conferma nuova password',
   'firstname' => 'Nome',
@@ -114,6 +118,7 @@ InitSession();
   <?php
     $userid = $_SESSION['userid'];
     $username = GetUsername($userid);
+    $email = ""; 
     $registry = GetRegistry($userid);
     $name = $registry['firstname'];
     $surname = $registry['surname'];
@@ -172,7 +177,16 @@ InitSession();
                           <div class="input-group mb-3">
                             <input type="text" class="form-control" id="<?php echo $ids['username'] ?>" name="<?php echo $ids['username'] ?>" value="<?php echo $username ?>">
                             <div class="input-group-append">
-                              <button type="submit" class="btn btn-success btn-block" name="<?php echo $username_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                              <button type="submit" class="btn btn-primary btn-block" name="<?php echo $username_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                            </div>
+                          </div>
+                        </form>
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                          <label for="<?php echo $ids['email'] ?>"><?php echo $strings['email'] ?></label>
+                          <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="<?php echo $ids['email'] ?>" name="<?php echo $ids['email'] ?>" value="<?php echo $email ?>">
+                            <div class="input-group-append">
+                              <button type="submit" class="btn btn-primary btn-block" name="<?php echo $email_key ?>"><i class="fa-solid fa-pencil"></i></button>
                             </div>
                           </div>
                         </form>
@@ -186,7 +200,7 @@ InitSession();
                             <div class="input-group mb-3">
                               <input type="password" class="form-control" id="<?php echo $ids['confirm_password'] ?>" name="<?php echo $ids['confirm_password'] ?>">
                                 <div class="input-group-append">
-                                  <button type="submit" class="btn btn-success btn-block" name="<?php echo $password_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                                  <button type="submit" class="btn btn-primary btn-block" name="<?php echo $password_key ?>"><i class="fa-solid fa-pencil"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -207,17 +221,16 @@ InitSession();
                           <label><?php echo $strings['pic'] ?></label>
                             <div class="input-group">
                               <img class="rounded img-thumbnail " style="width:200px; height:200px;" src="<?php echo $pic ?>" alt="<?php echo $strs_post['alt_pfp'] ?>">
-                              <div class="input-group-append align-self-end">
-                                <input type="file" accept="image/*" name="<?php echo $ids['pic'] ?>" id="<?php echo $ids['pic'] ?>" hidden/>
-                                <button class="btn btn-success btn-block" name="<?php echo $profile_picture_key ?>"><i class="fa-solid fa-pencil"></i></button>
-                              </div>
+                              <input type="file" accept="image/*" name="<?php echo $ids['upic'] ?>" id="<?php echo $ids['upic'] ?>" hidden/>
+                              <button type="submit" name="<?php echo $ids['cpic'] ?>" id="<?php echo $ids['cpic'] ?>" hidden></button>
                             </div>
                           </form>
                         </div>
                         <div class="col-lg-3 p-3">
                           <label><?php echo $strings['upload_img'] ?></label>
                           <p><?php echo $strings['extensioninfo'] ?></p>
-                          <label for="<?php echo $ids['pic'] ?>" class="btn btn-primary" name="<?php echo $profile_picture_key ?>"><i class="fa-solid fa-paperclip"></i> <?php echo $strings['attach_img'] ?></label>
+                          <label for="<?php echo $ids['upic'] ?>" class="btn btn-primary" name="<?php echo $profile_picture_key ?>"><i class="fa-solid fa-upload"></i></label>
+                          <label for="<?php echo $ids['cpic'] ?>" class="btn btn-primary" name="<?php echo $profile_picture_key ?>"><i class="fa-solid fa-pencil"></i></button>
                         </div>
                         <div class="col-lg p-3">
                           <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
@@ -225,7 +238,7 @@ InitSession();
                               <div class="input-group mb-3">
                                 <input type="text" class="form-control" id="<?php echo $ids['firstname'] ?>" name="<?php echo $ids['firstname'] ?>" value="<?php echo $name ?>">
                                 <div class="input-group-append">
-                                  <button type="submit" class="btn btn-success btn-block" name="<?php echo $firstname_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                                  <button type="submit" class="btn btn-primary btn-block" name="<?php echo $firstname_key ?>"><i class="fa-solid fa-pencil"></i></button>
                                 </div>
                               </div>
                           </form>
@@ -234,7 +247,7 @@ InitSession();
                             <div class="input-group mb-3">
                               <input type="text" class="form-control" id="<?php echo $ids['surname'] ?>" name="<?php echo $ids['surname'] ?>" value="<?php echo $surname ?>">
                               <div class="input-group-append">
-                                <button type="submit" class="btn btn-success btn-block" name="<?php echo $surname_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="submit" class="btn btn-primary btn-block" name="<?php echo $surname_key ?>"><i class="fa-solid fa-pencil"></i></button>
                               </div>
                             </div>
                           </form>
@@ -247,7 +260,7 @@ InitSession();
                             <div class="input-group mb-3">
                             <textarea class="form-control" rows="7" name="<?php echo $ids['biography'] ?>" id="<?php echo $ids['biography'] ?>"><?php echo $biography?></textarea>
                               <div class="input-group-append align-self-end">
-                                <button type="submit" class="btn btn-success btn-block" name="<?php echo $biography_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="submit" class="btn btn-primary btn-block" name="<?php echo $biography_key ?>"><i class="fa-solid fa-pencil"></i></button>
                               </div>
                             </div>
                           </form>
