@@ -296,7 +296,7 @@ class DatabaseHelper{
     }
 
     public function getFollowedPostFeed ($userid){
-        $query = " SELECT * FROM `post` p WHERE p.user IN
+        $query = " SELECT * FROM `post` p WHERE  p.user = ? OR p.user IN
             (
                 SELECT 
                     followedid
@@ -308,7 +308,7 @@ class DatabaseHelper{
         ORDER BY
            p.date DESC";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $userid);
+        $stmt->bind_param('ii', $userid, $userid);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -317,7 +317,7 @@ class DatabaseHelper{
 
     public function getMixedPostFeed ($userid){
         $query = " SELECT * FROM `post` p WHERE 
-            p.user != ? AND
+            p.user = ? OR
             (p.is_public = 1 OR p.user IN 
                 (
                     SELECT 

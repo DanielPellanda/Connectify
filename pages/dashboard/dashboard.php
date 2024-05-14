@@ -20,7 +20,7 @@ $ids = array (
 $strings = array(
 	'header' => ' Home ',
 	'all_posts' => ' Tutti i Post ',
-	'priv_posts' => ' Solo Post dei Follower',
+	'priv_posts' => ' Post dei Seguiti ',
 );
 
 ?>
