@@ -73,71 +73,83 @@ $strings = array(
 				        <!-- Current user name and image -->
                   <div class="card-body">
                     <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h4> <?php echo $username ?> </h4>
+                      <div class="col-md-3">
                         <img class="rounded img-thumbnail " style="width:200px; height:200px;" src="<?php echo $pic ?>" alt="<?php echo $strs_post['alt_pfp'] ?>">
                       </div>
-                      <div class="col-sm-1 align-self-center"></div>
-                      <div class="col-sm-4 align-self-center">
-                        <h4><a href="list.php?user=<?php echo $userid?>#followers"><i class="fa-solid fa-users"></i> <?php echo $strings['followers'] ?></a> : <?php echo FollowersCount($userid) ?></h4>
-                      </div>
-                      <div class="col-sm-4  align-self-center">
-                        <h4><a href="list.php?user=<?php echo $userid?>#followed"><i class="fa-solid fa-users"></i> <?php echo $strings['followed'] ?></a> : <?php echo FollowedCount($userid) ?></h4>
-                      </div>
-					          </div>
-                    <?php
-                      if($_SESSION['userid'] == $userid || IsFollower($userid)){
-                        echo '
-                        <div class="row mb-3">
-                          <h6>'.$name." ".$surname.'</h6>
+                      <div class="col-lg">
+                        <div class="row mb-2">
+                          <div class="col-md-3">
+                            <div class="row mb-2">
+                              <h2> <?php echo $username ?> </h2>
+                            </div>
+                            <?php
+                              if($_SESSION['userid'] == $userid || IsFollower($userid)){
+                                echo '
+                                  <div class="row mb-3">
+                                    <h6>'.$name." ".$surname.'</h6>
+                                  </div>';
+                              }
+                            ?>
+                          </div>
+                          <div class="col-md-4">
+                            <h4><a href="list.php?user=<?php echo $userid?>#followers"><i class="fa-solid fa-users"></i> <?php echo $strings['followers'] ?></a> : <?php echo FollowersCount($userid) ?></h4>
+                          </div>
+                          <div class="col-md-5">
+                            <h4><a href="list.php?user=<?php echo $userid?>#followed"><i class="fa-solid fa-users"></i> <?php echo $strings['followed'] ?></a> : <?php echo FollowedCount($userid) ?></h4>
+                          </div>
                         </div>
-                        <div class="row">
-                          <p>'.$biography.'</p>
-                        </div>';
-                      }
-                    ?>
-						        <!-- buttons -->
-						        <div class="row">
-                      <?php
-                        if ($_SESSION['userid'] == $userid) {
-                          echo '
-                          <div class="col-4 col-lg-4">
-                            <a href="'.$cfg->GetURL('modifyprofile').'" class="btn btn-primary btn-block">
-                            <i class="fa-solid fa-pencil"></i> '.$strings['modify_profile'].' </a>
-                          </div>
-                          <div class="col-4 col-lg-4">
-                          </div>
-                          <div class="col-4 col-lg-4">
-                            <a href="'.$cfg->GetURL('dashboard').'#newPost" class="btn btn-primary btn-block">
-                            <i class="fa-solid fa-square-plus"></i> '.$strings['new_post_create'].' </a>
-                          </div>';
-                        } elseif(IsFollower($userid)) {
-                          echo '
-                          <div class="col-4 col-lg-4">
-                            <form id="unfollowForm" action="unfollow.php" method="post">
-                              <input type="hidden" name="myid" value="'.$_SESSION['userid'].'">
-                              <input type="hidden" name="userid" value="'.$userid.'">
-                              <button type="submit" class="btn btn-secondary btn-block form-check-label" id="unfollowBtn">
-                                <i class="fa-solid fa-user"></i> '.$strings['unfollow'].'
-                              </button>
-                            </form>
-                          </div>';
-                        } else {
-                          echo '
-                          <div class="col-4 col-lg-4">
-                            <form id="unfollowForm" action="follow.php" method="post">
-                              <input type="hidden" name="myid" value="'.$_SESSION['userid'].'">
-                              <input type="hidden" name="userid" value="'.$userid.'">
-                              <button type="submit" class="btn btn-primary btn-block form-check-label" id="followBtn">
-                                <i class="fa-solid fa-user"></i> '.$strings['follow'].'
-                              </button>
-                            </form>
-                          </div>';
-                        }
-                      ?>
-						        </div>
+                        <?php
+                          if($_SESSION['userid'] == $userid || IsFollower($userid)){
+                            echo '
+                              <div class="row mb-3 text-break">
+                                <p>'.$biography.'</p>
+                              </div>';
+                          }
+                        ?>
+						            <!-- buttons -->
+						            <div class="row">
+                        <?php
+                          if ($_SESSION['userid'] == $userid) {
+                            echo '
+                            <div class="col-4 col-lg-4">
+                              <a href="'.$cfg->GetURL('modifyprofile').'" class="btn btn-primary btn-block">
+                              <i class="fa-solid fa-pencil"></i> '.$strings['modify_profile'].' </a>
+                            </div>
+                            <div class="col-4 col-lg-4">
+                            </div>
+                            <div class="col-4 col-lg-4">
+                              <a href="'.$cfg->GetURL('dashboard').'#newPost" class="btn btn-primary btn-block">
+                              <i class="fa-solid fa-square-plus"></i> '.$strings['new_post_create'].' </a>
+                            </div>';
+                          } elseif(IsFollower($userid)) {
+                            echo '
+                            <div class="col-4 col-lg-4">
+                              <form id="unfollowForm" action="unfollow.php" method="post">
+                                <input type="hidden" name="myid" value="'.$_SESSION['userid'].'">
+                                <input type="hidden" name="userid" value="'.$userid.'">
+                                <button type="submit" class="btn btn-secondary btn-block form-check-label" id="unfollowBtn">
+                                  <i class="fa-solid fa-user"></i> '.$strings['unfollow'].'
+                                </button>
+                              </form>
+                            </div>';
+                          } else {
+                            echo '
+                            <div class="col-4 col-lg-4">
+                              <form id="unfollowForm" action="follow.php" method="post">
+                                <input type="hidden" name="myid" value="'.$_SESSION['userid'].'">
+                                <input type="hidden" name="userid" value="'.$userid.'">
+                                <button type="submit" class="btn btn-primary btn-block form-check-label" id="followBtn">
+                                  <i class="fa-solid fa-user"></i> '.$strings['follow'].'
+                                </button>
+                              </form>
+                            </div>';
+                          }
+                        ?>
+                        </div>
+						          </div>
+                    </div>
                   </div>
-              </div>
+                </div>
               </div>
             </div>
             <?php RenderUserPosts($userid) ?>
