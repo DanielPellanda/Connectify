@@ -20,10 +20,10 @@ class DatabaseHelper{
 
 /******************************** LOGIN AND REGISTRATION *********************************/
 
-    public function register( $username, $password, $firstname, $surname ){
-        $query = "INSERT INTO `user` (`username`, `password`, `firstname`, `surname`) VALUES (?,?,?,?)";
+    public function register( $username, $password, $firstname, $surname, $email){
+        $query = "INSERT INTO `user` (`username`, `password`, `firstname`, `surname`, `email`) VALUES (?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssss', $username, $password, $firstname, $surname);
+        $stmt->bind_param('sssss', $username, $password, $firstname, $surname, $email);
 
         return $stmt->execute();
     }
@@ -38,8 +38,28 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getUseridFromEmail( $email ){
+        $query = "SELECT `userid` FROM `user` WHERE `email` = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getUsernameFromUserId ( $userid ){
         $query = "SELECT `username` FROM `user` WHERE `userid` = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $userid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getEmailFromUserId ( $userid ){
+        $query = "SELECT `email` FROM `user` WHERE `userid` = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $userid);
         $stmt->execute();
@@ -114,6 +134,14 @@ class DatabaseHelper{
         $query = "UPDATE `user` SET `surname` = ? WHERE `userid` = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $surname, $userid);
+
+        return $stmt->execute();
+    }
+
+    public function updateEmail( $userid, $email ){
+        $query = "UPDATE `user` SET `email` = ? WHERE `userid` = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $email, $userid);
 
         return $stmt->execute();
     }

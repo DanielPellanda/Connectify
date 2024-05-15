@@ -49,6 +49,7 @@ $strings = array(
   'missing_firstname'=>'Inserire un nome.',
   'missing_surname'=>'Inserire un cognome.',
   'missing_password'=>'Inserire una password.',
+  'missing_email'=>'Inserire una email.',
   'error_username'=>"È già presente un account con quell'username.",
   'error_username_long'=>"L'username inserito non può essere lungo più di ".$username_max_length." caratteri.",
   'error_firstname_long'=>'IL nome non può essere lungo più di '.$username_max_length.' caratteri.',
@@ -60,6 +61,9 @@ $strings = array(
   'error_password_number'=>'La passworddeve contenere almeno un numero.',
   'error_password_schar'=>'La password deve contenere almeno un carattere speciale.',
   'error_confirm_password'=>'La due password inserite non coincidono.',
+  'error_email_long'=>'La email inserita non può essere lunga più di '.$email_max_length.' caratteri.',
+	'error_email_invalid'=>'La email inserita non è valida',
+	'error_email'=>'La email inserita è già in uso',
   'error_generic'=>'Oops! Qualcosa è andato storto. Per favore riprova più tardi.',
   'success'=>'Modifica eseguita con successo',
 );
@@ -80,6 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $status = ChangeBio($ids['biography']);
   } else if (isset($_POST[$profile_picture_key])) {
     $status = ChangePic($ids['upic']);
+  } else if (isset($_POST[$email_key])) {
+    $status = ChangeEmail($ids['email']);
   }
 	
 	// Assigns the error message to show under the form.
@@ -101,6 +107,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		ExitCode::ErrNumberPassword => $strings['error_password_number'],
 		ExitCode::ErrScharPassword => $strings['error_password_schar'],
 		ExitCode::ErrConfirmPassword => $strings['error_confirm_password'],
+    ExitCode::ErrEmptyEmail => $strings['missing_email'],
+		ExitCode::ErrUsedEmail => $strings['error_email'],
+		ExitCode::ErrLongEmail => $strings['error_email_long'],
+		ExitCode::ErrInvalidEmail => $strings['error_email_invalid'],
 		
 		default => $strings['error_generic'],
 	};
@@ -118,7 +128,7 @@ InitSession();
   <?php
     $userid = $_SESSION['userid'];
     $username = GetUsername($userid);
-    $email = ""; 
+    $email = GetEmail($userid); 
     $registry = GetRegistry($userid);
     $name = $registry['firstname'];
     $surname = $registry['surname'];
