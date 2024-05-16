@@ -90,7 +90,7 @@ function AddNewPost($cfg, $id_title, $id_text, $id_img, $id_visible) {
     }
 
     $visible = 0;
-    if (isset($form[$id_visible]) && $form[$id_visible]) {
+    if (isset($_POST[$id_visible]) && $_POST[$id_visible]) {
         $visible = 1;
     }
 
@@ -174,9 +174,8 @@ function EditPost($cfg, $post, $id_title, $id_text, $id_img, $id_visible) {
         }
     }
     else {
-        // Delete older image saved
         if (is_file(ROOT.$post->img)) {
-            unlink(ROOT.$post->img);
+            $img = $post->img;
         }
     }
 

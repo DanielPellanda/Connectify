@@ -2,6 +2,11 @@
 
 require_once $cfg->GetAbsolutePath('posteditorhelp');
 
+$postid = -1;
+if (!empty($post)) {
+	$postid = $post->id;
+}
+
 ?>
 <div class="card card-widget">
   <!-- Current user name and image -->
@@ -57,7 +62,7 @@ require_once $cfg->GetAbsolutePath('posteditorhelp');
 		  </div>
 		  <!-- Remove attachment -->
 		  <div class="col-4 col-lg-2" id="<?php echo $postids['post_boxremove'] ?>" <?php PrintIfOrDefault('hidden', !$is_imgpresent) ?>>
-		  	<button type="button" class="btn btn-danger btn-block form-check-label" id="<?php echo $postids['post_remove'] ?>" onclick="RemoveAttachedImage(<?php echo '\''.$postids['post_img'].'\', \''.$postids['post_boxpreview'].'\', \''. $postids['post_boxadd'].'\', \''. $postids['post_boxremove'].'\', \''.$postids['post_imgpreview'].'\''; ?>)"><i class="fa-solid fa-trash"></i>  <?php echo $poststrings['post_rmattach'] ?></button>
+		  	<button type="button" class="btn btn-danger btn-block form-check-label" id="<?php echo $postids['post_remove'] ?>" onclick="RemoveAttachedImage(<?php echo '\''.$postids['post_img'].'\', \''.$postids['post_boxpreview'].'\', \''. $postids['post_boxadd'].'\', \''. $postids['post_boxremove'].'\', \''.$postids['post_imgpreview'].'\', \''.$postid.'\''; ?>)"><i class="fa-solid fa-trash"></i>  <?php echo $poststrings['post_rmattach'] ?></button>
 		  </div>
 		  <!-- Should the post be public? -->
 		  <div class="col-4 col-lg-8 float-right text-right">
