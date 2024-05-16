@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS `WebProj`.`user` (
   `userid` INT NOT NULL AUTO_INCREMENT,
   `password` VARCHAR(512) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(50) NOT NULL,
   `firstname` TINYTEXT NOT NULL,
   `surname` TINYTEXT NOT NULL,
   `biography` TINYTEXT DEFAULT "",

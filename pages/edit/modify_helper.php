@@ -9,6 +9,7 @@ require_once $cfg->GetAbsolutePath('filemgr');
 $username_max_length=40;
 $password_max_length=20;
 $password_min_length=7;
+$email_max_length=50;
 $bio_max_length=255;
 $profile_img_storage = '/img/profile/';
 
@@ -20,10 +21,13 @@ enum ExitCode {
 	case ErrEmptyFirstname;
 	case ErrEmptySurname;
 	case ErrEmptyPassword;
+	case ErrEmptyEmail;
 	case ErrExistsUsername;
 	case ErrLongUsername;
 	case ErrLongFirstname;
 	case ErrLongSurname;
+	case ErrLongEmail;
+	case ErrInvalidEmail;
 	case ErrLongPassword;
 	case ErrLongBio;
 	case ErrShortPassword;
@@ -31,6 +35,7 @@ enum ExitCode {
 	case ErrNumberPassword;
 	case ErrScharPassword;
 	case ErrConfirmPassword;
+	case ErrUsedEmail;
 }
 
 function InitSession() {
@@ -54,6 +59,15 @@ function GetUsername($userid){
 	return $username;
 }
 
+function GetEmail($userid){
+	global $cfg;
+
+	$email =  $cfg->db->getEmailFromUserId($userid)[0]['email'];
+	if (!isset($email)) {
+		return ;
+	}
+	return $email;
+}
 
 function GetRegistry($userid){
 	global $cfg;
@@ -247,4 +261,36 @@ function ChangePic($pfp_key){
 	return ExitCode::Success;
 }
 
+function ChangeEmail($email_key){
+    global $cfg;
+    global $email_max_length;
+
+	// Check if email field is empty
+	if (empty(trim($_POST[$email_key]))) {
+		return ExitCode::ErrEmptyEmail;
+	}
+	$email = $_POST[$email_key];
+
+	// Check if email is too long
+	if (strlen($email) > $email_max_length) {
+		return ExitCode::ErrLongEmail;
+	}
+	// Check if the email contains a @.
+	if (!preg_match('/[@]/', $email)) {
+		return ExitCode::ErrInvalidEmail;
+	}
+	// Check if email is already in use
+	$userid = $cfg->db->getUseridFromEmail($email);
+	if (isset($userid) && count($userid) > 0) {
+		return ExitCode::ErrUsedEmail;
+	}
+
+    // Change Email
+	if (!$cfg->db->updateEmail( $_SESSION['userid'], $email )) {
+		// If request was not successful, throw generic error.
+		return ExitCode::ErrGeneric;
+	}	
+	// Account modified successfully
+	return ExitCode::Success;
+}
 ?>

@@ -5,6 +5,7 @@ require_once '../../init.php';
 
 // Max lengths
 $username_max_length=40;
+$email_max_length=50;
 $password_max_length=20;
 $password_min_length=7;
 
@@ -15,23 +16,28 @@ enum ExitCode {
 	case ErrEmptyFirstname;
 	case ErrEmptySurname;
 	case ErrEmptyPassword;
+	case ErrEmptyEmail;
 	case ErrExistsUsername;
 	case ErrLongUsername;
 	case ErrLongFirstname;
 	case ErrLongSurname;
+	case ErrLongEmail;
+	case ErrInvalidEmail;
 	case ErrLongPassword;
 	case ErrShortPassword;
 	case ErrCasePassword;
 	case ErrNumberPassword;
 	case ErrScharPassword;
 	case ErrConfirmPassword;
+	case ErrUsedEmail;
 }
 
 // Validates form data and registers new account in the db.
 // Returns an exit code indicating the esit of the request (0 if successful).
-function RegisterNewAccount($username_key, $password_key, $confirm_password_key, $firstname_key, $surname_key) {
+function RegisterNewAccount($username_key, $password_key, $confirm_password_key, $firstname_key, $surname_key, $email_key) {
     global $cfg;
 	global $username_max_length;
+	global $email_max_length;
 	global $password_max_length;
 	global $password_min_length;
 
@@ -53,7 +59,13 @@ function RegisterNewAccount($username_key, $password_key, $confirm_password_key,
 		return ExitCode::ErrEmptySurname;
 	}
 	$surname =  $_POST[$surname_key];
-	
+
+	// Check if email field is empty
+	if (empty(trim($_POST[$email_key]))) {
+		return ExitCode::ErrEmptyEmail;
+	}
+	$email = $_POST[$email_key];
+
 	// Check if password field is empty
 	if (empty(trim($_POST[$password_key]))) {
 		return ExitCode::ErrEmptyPassword;
@@ -72,6 +84,14 @@ function RegisterNewAccount($username_key, $password_key, $confirm_password_key,
 	// Check if surname is too long
 	if (strlen($surname) > $username_max_length) {
 		return ExitCode::ErrLongSurname;
+	}
+	// Check if email is too long
+	if (strlen($email) > $email_max_length) {
+		return ExitCode::ErrLongEmail;
+	}
+	// Check if the email contains a @.
+	if (!preg_match('/[@]/', $email)) {
+		return ExitCode::ErrInvalidEmail;
 	}
 	// Check if password is too short
 	if (strlen($password) < $password_min_length) {
@@ -93,7 +113,7 @@ function RegisterNewAccount($username_key, $password_key, $confirm_password_key,
 	if (!preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $password)) {
 		return ExitCode::ErrScharPassword;
 	}
-	
+
 	// Check if password and confirmed password match.
 	if (strcmp($password, $_POST[$confirm_password_key])) {
 		return ExitCode::ErrConfirmPassword;
@@ -101,16 +121,21 @@ function RegisterNewAccount($username_key, $password_key, $confirm_password_key,
 	
 	// Validate credentials
 	// Check if username already exists
-	$userid = $cfg->db->getUserId($username);
+	$userid = $cfg->db->getUserid($username);
 	if (isset($userid) && count($userid) > 0) {
 		return ExitCode::ErrExistsUsername;
+	}
+	// Check if email is already in use
+	$userid = $cfg->db->getUseridFromEmail($email);
+	if (isset($userid) && count($userid) > 0) {
+		return ExitCode::ErrUsedEmail;
 	}
 	
 	// Hash the password
 	$password = $cfg->auth->GenerateHashedPass($password);
 	
 	// Register the new account entry in the db
-	if (!$cfg->db->register($username, $password, $firstname, $surname)) {
+	if (!$cfg->db->register($username, $password, $firstname, $surname, $email)) {
 		// If request was not successful, throw generic error.
 		return ExitCode::ErrGeneric;
 	}
