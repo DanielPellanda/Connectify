@@ -168,13 +168,11 @@ InitSession();
 			            <div class="card-header">
 					          <div class="user-block">
 					            <img class="img-circle" src="<?php echo $_SESSION['pfp'] ?>" alt="<?php echo $strs_post['alt_pfp'] ?>">
-					            <span class="username">
-					  	          <p><?php echo $_SESSION['fullname'] ?></p>
-					            </span>
+					            <span class="username"><?php echo $_SESSION['fullname'] ?></span>
 					          </div>
                   </div>
                   <div class="card">
-                    <div class="card-header" id="">
+                    <div class="card-header">
                       <div class="row">
                         <h5 class="card-title"><?php echo $strings['login'] ?></h5>
                       </div>
@@ -231,7 +229,7 @@ InitSession();
                           <label><?php echo $strings['pic'] ?></label>
                             <div class="input-group">
                               <img class="rounded img-thumbnail " style="width:200px; height:200px;" src="<?php echo $pic ?>" alt="<?php echo $strs_post['alt_pfp'] ?>">
-                              <input type="file" accept="image/*" name="<?php echo $ids['upic'] ?>" id="<?php echo $ids['upic'] ?>" hidden/>
+                              <input type="file" accept="image/*" name="<?php echo $ids['upic'] ?>" id="<?php echo $ids['upic'] ?>" hidden>
                               <button type="submit" name="<?php echo $profile_picture_key ?>" id="<?php echo $ids['cpic'] ?>" hidden></button>
                             </div>
                           </form>
@@ -239,8 +237,8 @@ InitSession();
                         <div class="col-lg-3 p-3">
                           <label><?php echo $strings['upload_img'] ?></label>
                           <p><?php echo $strings['extensioninfo'] ?></p>
-                          <label for="<?php echo $ids['upic'] ?>" class="btn btn-primary" name="<?php echo $profile_picture_key ?>"><i class="fa-solid fa-upload"></i></label>
-                          <label for="<?php echo $ids['cpic'] ?>" class="btn btn-primary" name="<?php echo $profile_picture_key ?>"><i class="fa-solid fa-pencil"></i></label>
+                          <label for="<?php echo $ids['upic'] ?>" class="btn btn-primary" ><i class="fa-solid fa-upload"></i></label>
+                          <label for="<?php echo $ids['cpic'] ?>" class="btn btn-primary" ><i class="fa-solid fa-pencil"></i></label>
                         </div>
                         <div class="col-lg p-3">
                           <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">

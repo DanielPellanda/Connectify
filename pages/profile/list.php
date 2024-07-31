@@ -65,9 +65,7 @@ $strings = array(
                 <div class="card-header">
                   <div class="user-block">
                     <img class="img-circle" src="<?php echo $pic ?>" alt="<?php echo $strs_post['alt_pfp'] ?>">
-                    <span class="username">
-                      <h4> <?php echo $username ?> </h4>
-                    </span>
+                    <span class="username"> <?php echo $username ?> </span>
                   </div>
                 </div>
                 <div class="card-group">
