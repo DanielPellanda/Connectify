@@ -24,10 +24,6 @@ class ConfigHelper {
 				
 		// Database		
 		'db'		  		=> '/db/database.php',
-				
-		// Sidebar		
-		'sidebar'	  		=> '/accs/sidebar/sidebar.php',
-		'sidebarhelp' 		=> '/accs/sidebar/sidebar_helper.php',
 		
 		// Navbar
 		'navbar'	  		=> '/accs/navbar/navbar.php',
@@ -66,9 +62,9 @@ class ConfigHelper {
 		'notificationhelp' 		=> '/pages/notification/notification_helper.php',
 
 		// Modify
-		'modifyprofile' 		=> '/pages/edit/modify_profile.php',
-		'modifyscript' 		=> '/pages/edit/modify_profile.js',
-		'modifyhelp' 		=> '/pages/edit/modify_helper.php',
+		'modifyprofile' 		=> '/pages/profile/edit/modify_profile.php',
+		'modifyscript' 		=> '/pages/profile/edit/modify_profile.js',
+		'modifyhelp' 		=> '/pages/profile/edit/modify_helper.php',
 		
 	);
 	public $auth;
@@ -104,7 +100,7 @@ class ConfigHelper {
 	}
 
 	public function ShowAlert($message) {
-		echo '<script type="text/javascript">alert("' . $message . '")</script>';
+		echo '<script>alert("' . $message . '")</script>';
 	}
 
 	public function ValidateSession() {

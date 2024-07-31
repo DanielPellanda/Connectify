@@ -1,7 +1,7 @@
 <?php
 
 // Connect config helper
-require_once '../../init.php';
+require_once '../../../init.php';
 require_once $cfg->GetAbsolutePath('modifyhelp');
 
 $cfg->ValidateSession();

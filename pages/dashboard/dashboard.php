@@ -25,13 +25,13 @@ $strings = array(
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
 	  <?php $cfg->PrintHeadTitle($_SESSION['context']) ?> 
 	  <?php $cfg->IncludeStylesheets() ?>
-	<script type="text/javascript">
+	<script>
         let userId = "<?php echo $_SESSION['userid'] ?>";
 		let idList = {
 		<?php
@@ -78,8 +78,8 @@ $strings = array(
         </div>
       </div>
     </div>
-    <script src="<?php echo $cfg->GetURL('dashboardscript') ?>" type="text/javascript"></script>
-    <script src="<?php echo $cfg->GetURL('postscript') ?>" type="text/javascript"></script>
-    <script src="<?php echo $cfg->GetURL('postcommentscript') ?>" type="text/javascript"></script>
+    <script src="<?php echo $cfg->GetURL('dashboardscript') ?>"></script>
+    <script src="<?php echo $cfg->GetURL('postscript') ?>"></script>
+    <script src="<?php echo $cfg->GetURL('postcommentscript') ?>"></script>
   </body>
 </html>
