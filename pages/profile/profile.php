@@ -153,8 +153,8 @@ $strings = array(
               </div>
             </div>
             <?php RenderUserPosts($userid) ?>
-            <script src="<?php echo $cfg->GetURL('postscript') ?>" type="text/javascript"></script>
-            <script src="<?php echo $cfg->GetURL('postcommentscript') ?>" type="text/javascript"></script>
+            <script src="<?php echo $cfg->GetURL('postscript') ?>"></script>
+            <script src="<?php echo $cfg->GetURL('postcommentscript') ?>"></script>
           </div>
         </div>
       </div>

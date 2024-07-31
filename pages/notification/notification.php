@@ -62,9 +62,7 @@ $strings = array(
                 <div class="card-header">
                   <div class="user-block">
                     <img class="img-circle" src="<?php echo $_SESSION['pfp'] ?>" alt="<?php echo $strs_post['alt_pfp'] ?>">
-                    <span class="username">
-                      <h4> <?php echo $_SESSION['username'] ?> </h4>
-                    </span>
+                    <span class="username"><?php echo $_SESSION['username'] ?></span>
                   </div>
                 </div>
                 <div class="card">
@@ -100,7 +98,6 @@ $strings = array(
                         } else {
                           GenerateList($read);
                         }?>
-                    </ul>
                     </div>
                 </div>
               </div>
