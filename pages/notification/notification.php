@@ -69,7 +69,7 @@ $strings = array(
                     <div class="card-header" id="tobeRead">
                       <div class="row">
                       <div class="col-sm">
-                        <h5 class="card-title"><i class="fa-solid fa-envelope"></i> <?php echo $strings['toberead'] ?> : <?php echo $num_notifications ?></h5>
+                        <p class="card-title"><strong class="fa-solid fa-envelope"></strong> <?php echo $strings['toberead'] ?> : <?php echo $num_notifications ?></p>
                       </div>
                       </div>
                     </div>
@@ -87,7 +87,7 @@ $strings = array(
                     <div class="card-header" id="read">
                       <div class="row">
                       <div class="col-sm">
-                        <h5 class="card-title"><i class="fa-solid fa-envelope-circle-check"></i> <?php echo $strings['read'] ?>  : <?php echo $num_read ?></h5>
+                        <p class="card-title"><strong class="fa-solid fa-envelope-circle-check"></strong> <?php echo $strings['read'] ?>  : <?php echo $num_read ?></p>
                       </div>
                       </div>
                     </div>

@@ -80,22 +80,22 @@ $strings = array(
                         <div class="row mb-2">
                           <div class="col-md-3">
                             <div class="row mb-2">
-                              <h2> <?php echo $username ?> </h2>
+                              <h2><strong><?php echo $username ?></strong> </h2>
                             </div>
                             <?php
                               if($_SESSION['userid'] == $userid || IsFollower($userid)){
                                 echo '
                                   <div class="row mb-3">
-                                    <h6>'.$name." ".$surname.'</h6>
+                                    <p>'.$name." ".$surname.'</p>
                                   </div>';
                               }
                             ?>
                           </div>
                           <div class="col-md-4">
-                            <h4><a href="list.php?user=<?php echo $userid?>#followers"><i class="fa-solid fa-users"></i> <?php echo $strings['followers'] ?></a> : <?php echo FollowersCount($userid) ?></h4>
+                            <h3><a href="list.php?user=<?php echo $userid?>#followers"><strong class="fa-solid fa-users"></strong> <?php echo $strings['followers'] ?></a> : <?php echo FollowersCount($userid) ?></h3>
                           </div>
                           <div class="col-md-5">
-                            <h4><a href="list.php?user=<?php echo $userid?>#followed"><i class="fa-solid fa-users"></i> <?php echo $strings['followed'] ?></a> : <?php echo FollowedCount($userid) ?></h4>
+                            <h3><a href="list.php?user=<?php echo $userid?>#followed"><strong class="fa-solid fa-users"></strong> <?php echo $strings['followed'] ?></a> : <?php echo FollowedCount($userid) ?></h3>
                           </div>
                         </div>
                         <?php
@@ -113,13 +113,13 @@ $strings = array(
                             echo '
                             <div class="col-4 col-lg-4">
                               <a href="'.$cfg->GetURL('modifyprofile').'" class="btn btn-primary btn-block">
-                              <i class="fa-solid fa-pencil"></i> '.$strings['modify_profile'].' </a>
+                              <strong class="fa-solid fa-pencil"></strong> '.$strings['modify_profile'].' </a>
                             </div>
                             <div class="col-4 col-lg-4">
                             </div>
                             <div class="col-4 col-lg-4">
                               <a href="'.$cfg->GetURL('dashboard').'#newPost" class="btn btn-primary btn-block">
-                              <i class="fa-solid fa-square-plus"></i> '.$strings['new_post_create'].' </a>
+                              <strong class="fa-solid fa-square-plus"></strong> '.$strings['new_post_create'].' </a>
                             </div>';
                           } elseif(IsFollower($userid)) {
                             echo '
@@ -128,7 +128,7 @@ $strings = array(
                                 <input type="hidden" name="myid" value="'.$_SESSION['userid'].'">
                                 <input type="hidden" name="userid" value="'.$userid.'">
                                 <button type="submit" class="btn btn-secondary btn-block form-check-label" id="unfollowBtn">
-                                  <i class="fa-solid fa-user"></i> '.$strings['unfollow'].'
+                                  <strong class="fa-solid fa-user"></strong> '.$strings['unfollow'].'
                                 </button>
                               </form>
                             </div>';
@@ -139,7 +139,7 @@ $strings = array(
                                 <input type="hidden" name="myid" value="'.$_SESSION['userid'].'">
                                 <input type="hidden" name="userid" value="'.$userid.'">
                                 <button type="submit" class="btn btn-primary btn-block form-check-label" id="followBtn">
-                                  <i class="fa-solid fa-user"></i> '.$strings['follow'].'
+                                  <strong class="fa-solid fa-user"></strong> '.$strings['follow'].'
                                 </button>
                               </form>
                             </div>';
