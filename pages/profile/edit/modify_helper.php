@@ -1,7 +1,7 @@
 <?php 
 
 // Initialize required components
-require_once '../../init.php';
+require_once '../../../init.php';
 require_once $cfg->GetAbsolutePath('user');
 require_once $cfg->GetAbsolutePath('filemgr');
 

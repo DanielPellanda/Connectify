@@ -79,4 +79,4 @@ if (!empty($post)) {
 	</form>
   </div>
 </div>
-<script src="<?php echo $cfg->GetURL('posteditorscript') ?>" type="text/javascript"></script>
+<script src="<?php echo $cfg->GetURL('posteditorscript') ?>"></script>
