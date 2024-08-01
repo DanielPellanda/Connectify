@@ -92,17 +92,10 @@ $strings = array(
                             ?>
                           </div>
                           <div class="col-md-4">
-<<<<<<< HEAD
                             <h4><a href="list.php?user=<?php echo $userid?>#followers"><em class="fa-solid fa-users"></em> <?php echo $strings['followers'] ?></a> : <?php echo FollowersCount($userid) ?></h4>
                           </div>
                           <div class="col-md-5">
                             <h4><a href="list.php?user=<?php echo $userid?>#followed"><em class="fa-solid fa-users"></em> <?php echo $strings['followed'] ?></a> : <?php echo FollowedCount($userid) ?></h4>
-=======
-                            <h3><a href="list.php?user=<?php echo $userid?>#followers"><strong class="fa-solid fa-users"></strong> <?php echo $strings['followers'] ?></a> : <?php echo FollowersCount($userid) ?></h3>
-                          </div>
-                          <div class="col-md-5">
-                            <h3><a href="list.php?user=<?php echo $userid?>#followed"><strong class="fa-solid fa-users"></strong> <?php echo $strings['followed'] ?></a> : <?php echo FollowedCount($userid) ?></h3>
->>>>>>> fcdd39f6cc1569cdbfae0abd1bb257d024b90c17
                           </div>
                         </div>
                         <?php
@@ -120,21 +113,13 @@ $strings = array(
                             echo '
                             <div class="col-4 col-lg-4">
                               <a href="'.$cfg->GetURL('modifyprofile').'" class="btn btn-primary btn-block">
-<<<<<<< HEAD
                               <em class="fa-solid fa-pencil"></em> '.$strings['modify_profile'].' </a>
-=======
-                              <strong class="fa-solid fa-pencil"></strong> '.$strings['modify_profile'].' </a>
->>>>>>> fcdd39f6cc1569cdbfae0abd1bb257d024b90c17
                             </div>
                             <div class="col-4 col-lg-4">
                             </div>
                             <div class="col-4 col-lg-4">
                               <a href="'.$cfg->GetURL('dashboard').'#newPost" class="btn btn-primary btn-block">
-<<<<<<< HEAD
                               <em class="fa-solid fa-square-plus"></em> '.$strings['new_post_create'].' </a>
-=======
-                              <strong class="fa-solid fa-square-plus"></strong> '.$strings['new_post_create'].' </a>
->>>>>>> fcdd39f6cc1569cdbfae0abd1bb257d024b90c17
                             </div>';
                           } elseif(IsFollower($userid)) {
                             echo '
@@ -143,11 +128,7 @@ $strings = array(
                                 <input type="hidden" name="myid" value="'.$_SESSION['userid'].'">
                                 <input type="hidden" name="userid" value="'.$userid.'">
                                 <button type="submit" class="btn btn-secondary btn-block form-check-label" id="unfollowBtn">
-<<<<<<< HEAD
                                   <em class="fa-solid fa-user"></em> '.$strings['unfollow'].'
-=======
-                                  <strong class="fa-solid fa-user"></strong> '.$strings['unfollow'].'
->>>>>>> fcdd39f6cc1569cdbfae0abd1bb257d024b90c17
                                 </button>
                               </form>
                             </div>';
@@ -158,11 +139,7 @@ $strings = array(
                                 <input type="hidden" name="myid" value="'.$_SESSION['userid'].'">
                                 <input type="hidden" name="userid" value="'.$userid.'">
                                 <button type="submit" class="btn btn-primary btn-block form-check-label" id="followBtn">
-<<<<<<< HEAD
                                   <em class="fa-solid fa-user"></em> '.$strings['follow'].'
-=======
-                                  <strong class="fa-solid fa-user"></strong> '.$strings['follow'].'
->>>>>>> fcdd39f6cc1569cdbfae0abd1bb257d024b90c17
                                 </button>
                               </form>
                             </div>';
