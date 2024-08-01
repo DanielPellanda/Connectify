@@ -92,10 +92,10 @@ $strings = array(
                             ?>
                           </div>
                           <div class="col-md-4">
-                            <h4><a href="list.php?user=<?php echo $userid?>#followers"><em class="fa-solid fa-users"></em> <?php echo $strings['followers'] ?></a> : <?php echo FollowersCount($userid) ?></h4>
+                            <h3><a href="list.php?user=<?php echo $userid?>#followers"><em class="fa-solid fa-users"></em> <?php echo $strings['followers'] ?></a> : <?php echo FollowersCount($userid) ?></h3>
                           </div>
                           <div class="col-md-5">
-                            <h4><a href="list.php?user=<?php echo $userid?>#followed"><em class="fa-solid fa-users"></em> <?php echo $strings['followed'] ?></a> : <?php echo FollowedCount($userid) ?></h4>
+                            <h3><a href="list.php?user=<?php echo $userid?>#followed"><em class="fa-solid fa-users"></em> <?php echo $strings['followed'] ?></a> : <?php echo FollowedCount($userid) ?></h3>
                           </div>
                         </div>
                         <?php
