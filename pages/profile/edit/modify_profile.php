@@ -185,7 +185,7 @@ InitSession();
                           <div class="input-group mb-3">
                             <input type="text" class="form-control" id="<?php echo $ids['username'] ?>" name="<?php echo $ids['username'] ?>" value="<?php echo $username ?>">
                             <div class="input-group-append">
-                              <button type="submit" class="btn btn-primary btn-block" name="<?php echo $username_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                              <button type="submit" class="btn btn-primary btn-block" name="<?php echo $username_key ?>"><em class="fa-solid fa-pencil"></em></button>
                             </div>
                           </div>
                         </form>
@@ -194,7 +194,7 @@ InitSession();
                           <div class="input-group mb-3">
                             <input type="text" class="form-control" id="<?php echo $ids['email'] ?>" name="<?php echo $ids['email'] ?>" value="<?php echo $email ?>">
                             <div class="input-group-append">
-                              <button type="submit" class="btn btn-primary btn-block" name="<?php echo $email_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                              <button type="submit" class="btn btn-primary btn-block" name="<?php echo $email_key ?>"><em class="fa-solid fa-pencil"></em></button>
                             </div>
                           </div>
                         </form>
@@ -208,7 +208,7 @@ InitSession();
                             <div class="input-group mb-3">
                               <input type="password" class="form-control" id="<?php echo $ids['confirm_password'] ?>" name="<?php echo $ids['confirm_password'] ?>">
                                 <div class="input-group-append">
-                                  <button type="submit" class="btn btn-primary btn-block" name="<?php echo $password_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                                  <button type="submit" class="btn btn-primary btn-block" name="<?php echo $password_key ?>"><em class="fa-solid fa-pencil"></em></button>
                                 </div>
                             </div>
                         </form>
@@ -237,8 +237,8 @@ InitSession();
                         <div class="col-lg-3 p-3">
                           <label><?php echo $strings['upload_img'] ?></label>
                           <p><?php echo $strings['extensioninfo'] ?></p>
-                          <label for="<?php echo $ids['upic'] ?>" class="btn btn-primary" ><i class="fa-solid fa-upload"></i></label>
-                          <label for="<?php echo $ids['cpic'] ?>" class="btn btn-primary" ><i class="fa-solid fa-pencil"></i></label>
+                          <label for="<?php echo $ids['upic'] ?>" class="btn btn-primary" ><em class="fa-solid fa-upload"></em></label>
+                          <label for="<?php echo $ids['cpic'] ?>" class="btn btn-primary" ><em class="fa-solid fa-pencil"></em></label>
                         </div>
                         <div class="col-lg p-3">
                           <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
@@ -246,7 +246,7 @@ InitSession();
                               <div class="input-group mb-3">
                                 <input type="text" class="form-control" id="<?php echo $ids['firstname'] ?>" name="<?php echo $ids['firstname'] ?>" value="<?php echo $name ?>">
                                 <div class="input-group-append">
-                                  <button type="submit" class="btn btn-primary btn-block" name="<?php echo $firstname_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                                  <button type="submit" class="btn btn-primary btn-block" name="<?php echo $firstname_key ?>"><em class="fa-solid fa-pencil"></em></button>
                                 </div>
                               </div>
                           </form>
@@ -255,7 +255,7 @@ InitSession();
                             <div class="input-group mb-3">
                               <input type="text" class="form-control" id="<?php echo $ids['surname'] ?>" name="<?php echo $ids['surname'] ?>" value="<?php echo $surname ?>">
                               <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary btn-block" name="<?php echo $surname_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="submit" class="btn btn-primary btn-block" name="<?php echo $surname_key ?>"><em class="fa-solid fa-pencil"></em></button>
                               </div>
                             </div>
                           </form>
@@ -268,7 +268,7 @@ InitSession();
                             <div class="input-group mb-3">
                             <textarea class="form-control" rows="7" name="<?php echo $ids['biography'] ?>" id="<?php echo $ids['biography'] ?>"><?php echo $biography?></textarea>
                               <div class="input-group-append align-self-end">
-                                <button type="submit" class="btn btn-primary btn-block" name="<?php echo $biography_key ?>"><i class="fa-solid fa-pencil"></i></button>
+                                <button type="submit" class="btn btn-primary btn-block" name="<?php echo $biography_key ?>"><em class="fa-solid fa-pencil"></em></button>
                               </div>
                             </div>
                           </form>

@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 <body class="register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="<?php echo $hrefs['login_logo'] ?>"><b><?php echo $cfg->GetFormattedTitle() ?></b></a>
+    <a href="<?php echo $hrefs['login_logo'] ?>"><strong><?php echo $cfg->GetFormattedTitle() ?></strong></a>
   </div>
 
   <div class="card">
@@ -121,7 +121,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
         <div class="input-group mb-3">
-          <input type="text" name="<?php echo $username_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_username'] ?>">
+		  <label for="<?php echo $username_key ?>" hidden><?php echo $strings['placeholder_username'] ?></label>
+          <input type="text" id="<?php echo $username_key ?>" name="<?php echo $username_key ?>" title="<?php echo $username_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_username'] ?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -129,7 +130,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
           </div>
         </div>
 		<div class="input-group mb-3">
-          <input type="text" name="<?php echo $email_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_email'] ?>">
+		  <label for="<?php echo $email_key ?>" hidden><?php echo $strings['placeholder_email'] ?></label>
+          <input type="text" id="<?php echo $email_key ?>" name="<?php echo $email_key ?>" title="<?php echo $email_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_email'] ?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -137,7 +139,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
           </div>
         </div>
 		<div class="input-group mb-3">
-          <input type="text" name="<?php echo $firstname_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_firstname'] ?>">
+		  <label for="<?php echo $firstname_key ?>" hidden><?php echo $strings['placeholder_firstname'] ?></label>
+          <input type="text" id="<?php echo $firstname_key ?>" name="<?php echo $firstname_key ?>" title="<?php echo $firstname_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_firstname'] ?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -145,7 +148,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
           </div>
         </div>
 		<div class="input-group mb-3">
-          <input type="text" name="<?php echo $surname_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_surname'] ?>">
+		  <label for="<?php echo $surname_key ?>" hidden><?php echo $strings['placeholder_surname'] ?></label>
+          <input type="text" id="<?php echo $surname_key ?>" name="<?php echo $surname_key ?>" title="<?php echo $surname_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_surname'] ?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -153,7 +157,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="<?php echo $password_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_password'] ?>">
+		  <label for="<?php echo $password_key ?>" hidden><?php echo $strings['placeholder_password'] ?></label>
+          <input type="password" id="<?php echo $password_key ?>" name="<?php echo $password_key ?>" title="<?php echo $password_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_password'] ?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -161,7 +166,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="<?php echo $confirm_password_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_confirm_password'] ?>">
+		  <label for="<?php echo $confirm_password_key ?>" hidden><?php echo $strings['placeholder_confirm_password'] ?></label>
+          <input type="password" id="<?php echo $confirm_password_key ?>" name="<?php echo $confirm_password_key ?>" title="<?php echo $confirm_password_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_confirm_password'] ?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

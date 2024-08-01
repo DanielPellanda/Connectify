@@ -65,9 +65,9 @@ if (isset($p->numcomments) && is_numeric($p->numcomments)) {
 	}
 }
 
-$like_icon = '<i class="fa-regular fa-thumbs-up"></i>';
+$like_icon = '<em class="fa-regular fa-thumbs-up"></em>';
 if (isset($p->liked) && $p->liked) {
-	$like_icon = '<i class="fa-solid fa-thumbs-up"></i>';
+	$like_icon = '<em class="fa-solid fa-thumbs-up"></em>';
 }
 
 ?>
@@ -84,11 +84,11 @@ if (isset($p->liked) && $p->liked) {
       <div class="card-tools">
 	    <!-- Edit Post -->
         <button type="button" class="btn btn-tool" onclick="EditButtonOnClick('<?php echo $p->id?>', '<?php echo $cfg->GetURL('dashboard') ?>')">
-	  	  <i class="fa-regular fa-pen-to-square"></i>
+	  	  <em class="fa-regular fa-pen-to-square"></em>
         </button>
 	    <!-- Delete Post -->
         <button type="button" class="btn btn-tool" onclick="DeleteButtonOnClick('<?php echo $p->id?>')">
-	  	  <i class="fa-regular fa-trash-can"></i>
+	  	  <em class="fa-regular fa-trash-can"></em>
         </button>
       </div>
 	<?php endif; ?>
@@ -114,6 +114,7 @@ if (isset($p->liked) && $p->liked) {
     <form action="<?php echo $cfg->GetURL('postcommentnew') ?>?user=<?php echo $_SESSION['userid'] ?>&post=<?php echo $p->id ?>" method="post">
 	  <img class="img-fluid img-circle img-sm" src="<?php echo $_SESSION['pfp'] ?>" alt="<?php echo $strs_post['alt_pfp'] ?>">
       <div class="img-push">
+		<label for="<?php echo $ids['comment'] ?>" hidden><?php echo $strs_post['placeholder_comment'] ?></label>
         <input type="text" class="form-control form-control-sm" id="<?php echo $ids['comment'] ?>" name="<?php echo $ids['comment'] ?>" placeholder="<?php echo $strs_post['placeholder_comment'] ?>">
       </div>
     </form>

@@ -24,8 +24,7 @@ $strings = array(
 
 // Link paths
 $hrefs = array(
-	'login_logo'=>'',
-	'forgot_password'=>'',
+	'login_logo'=>$cfg->GetURL('login'),
 	'sign_up'=>$cfg->GetURL('register'),
 );
 
@@ -73,22 +72,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <?php $cfg->PrintHeadTitle('Login') ?>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?php $cfg->PrintHeadTitle('Login') ?>
   <?php $cfg->IncludeStylesheets() ?>
 </head>
-<body class="login-page">
+<body class="login-page" dir="auto">
   <div class="login-box">
     <div class="login-logo">
-      <a href="<?php echo $hrefs['login_logo'] ?>"><b><?php echo $cfg->GetFormattedTitle() ?></b></a>
+      <a href="<?php echo $hrefs['login_logo'] ?>"><strong><?php echo $cfg->GetFormattedTitle() ?></strong></a>
     </div>
     <div class="card">
       <div class="card-body login-card-body">
         <p class="login-box-msg"><?php echo $strings['login_box_msg'] ?></p>
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
           <div class="input-group mb-3">
-            <input type="text" name="<?php echo $username_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_username'] ?>">
+		    <label for="<?php echo $username_key ?>" hidden><?php echo $strings['placeholder_username'] ?></label>
+            <input type="text" id="<?php echo $username_key ?>" name="<?php echo $username_key ?>" title="<?php echo $username_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_username'] ?>">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -96,7 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" name="<?php echo $password_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_password'] ?>">
+		    <label for="<?php echo $password_key ?>" hidden><?php echo $strings['placeholder_password'] ?></label>
+            <input type="password" id="<?php echo $password_key ?>" name="<?php echo $password_key ?>" title="<?php echo $password_key ?>" class="form-control" placeholder="<?php echo $strings['placeholder_password'] ?>">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>

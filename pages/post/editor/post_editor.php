@@ -58,11 +58,11 @@ if (!empty($post)) {
 		  <!-- Attach image -->
 		  <div class="col-4 col-lg-2" id="<?php echo $postids['post_boxadd'] ?>" <?php PrintIfOrDefault('hidden', $is_imgpresent) ?>>
 		  	<input type="file" accept="image/*" name="<?php echo $postids['post_img'] ?>" id="<?php echo $postids['post_img'] ?>" onchange="CheckAttachment(<?php echo '\''.$postids['post_img'].'\', \''.$postids['post_boxpreview'].'\', \''. $postids['post_boxadd'].'\', \''. $postids['post_boxremove'].'\', \''.$postids['post_imgpreview'].'\''; ?>)" hidden />
-		  	<label for="<?php echo $postids['post_img'] ?>" class="btn btn-warning btn-block form-check-label"><i class="fa-solid fa-paperclip"></i>  <?php echo $poststrings['post_attach'] ?></label>
+		  	<label for="<?php echo $postids['post_img'] ?>" class="btn btn-warning btn-block form-check-label"><em class="fa-solid fa-paperclip"></em>  <?php echo $poststrings['post_attach'] ?></label>
 		  </div>
 		  <!-- Remove attachment -->
 		  <div class="col-4 col-lg-2" id="<?php echo $postids['post_boxremove'] ?>" <?php PrintIfOrDefault('hidden', !$is_imgpresent) ?>>
-		  	<button type="button" class="btn btn-danger btn-block form-check-label" id="<?php echo $postids['post_remove'] ?>" onclick="RemoveAttachedImage(<?php echo '\''.$postids['post_img'].'\', \''.$postids['post_boxpreview'].'\', \''. $postids['post_boxadd'].'\', \''. $postids['post_boxremove'].'\', \''.$postids['post_imgpreview'].'\', \''.$postid.'\''; ?>)"><i class="fa-solid fa-trash"></i>  <?php echo $poststrings['post_rmattach'] ?></button>
+		  	<button type="button" class="btn btn-danger btn-block form-check-label" id="<?php echo $postids['post_remove'] ?>" onclick="RemoveAttachedImage(<?php echo '\''.$postids['post_img'].'\', \''.$postids['post_boxpreview'].'\', \''. $postids['post_boxadd'].'\', \''. $postids['post_boxremove'].'\', \''.$postids['post_imgpreview'].'\', \''.$postid.'\''; ?>)"><em class="fa-solid fa-trash"></em>  <?php echo $poststrings['post_rmattach'] ?></button>
 		  </div>
 		  <!-- Should the post be public? -->
 		  <div class="col-4 col-lg-8 float-right text-right">

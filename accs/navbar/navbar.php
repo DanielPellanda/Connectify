@@ -8,6 +8,7 @@ $icon_img = SERVER_URL.'/img/logo.png';
 
 $strs_nbar = array(
 	'alt_logo' => $cfg->GetTitle().' Logo',
+	'alt_notify' => 'Notifiche',
 	'placeholder_search' => 'Cerca'
 );
 
@@ -24,7 +25,7 @@ function PrintMenuEntries() {
 		$str = $entry[0];
 		if (isset($_SESSION['context']) && !strcmp($_SESSION['context'], $str)) {
 			$str = '
-			<b>'.$str.'</b>
+			<strong>'.$str.'</strong>
 			';
 		}
 		
@@ -52,7 +53,8 @@ $num_notifications = $cfg->db->getNotificationCount($_SESSION['userid'])[0]['num
          <?php PrintMenuEntries() ?>
          <li class="nav-item dropdown">
           <a class="nav-link" href="<?php echo $cfg->getURL('notification')?>">
-            <i class="far fa-bell"></i>
+            <em class="far fa-bell"></em>
+			<p hidden><?php echo $strs_nbar['alt_notify'] ?></p>
             <?php
               if($num_notifications > 0){
                 echo '<span class="badge badge-danger navbar-badge">'.$num_notifications.'</span>';

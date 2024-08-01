@@ -73,7 +73,7 @@ $strings = array(
                     <div class="card-header" id="followers">
                       <div class="row">
                       <div class="col-sm">
-                        <h5 class="card-title"><i class="fa-solid fa-users"></i> <?php echo $strings['followers'] ?>  : <?php echo FollowersCount($userid) ?></h5>
+                        <h5 class="card-title"><em class="fa-solid fa-users"></em> <?php echo $strings['followers'] ?>  : <?php echo FollowersCount($userid) ?></h5>
                       </div>
                       </div>
                     </div>
@@ -108,7 +108,7 @@ $strings = array(
                     <div class="card-header" id="followed">
                       <div class="row">
                       <div class="col-sm">
-                        <h5 class="card-title"><i class="fa-solid fa-users"></i> <?php echo $strings['followed'] ?>  : <?php echo FollowedCount($userid) ?></h5>
+                        <h5 class="card-title"><em class="fa-solid fa-users"></em> <?php echo $strings['followed'] ?>  : <?php echo FollowedCount($userid) ?></h5>
                       </div>
                       </div>
                     </div>

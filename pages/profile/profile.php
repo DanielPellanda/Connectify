@@ -92,10 +92,10 @@ $strings = array(
                             ?>
                           </div>
                           <div class="col-md-4">
-                            <h4><a href="list.php?user=<?php echo $userid?>#followers"><i class="fa-solid fa-users"></i> <?php echo $strings['followers'] ?></a> : <?php echo FollowersCount($userid) ?></h4>
+                            <h4><a href="list.php?user=<?php echo $userid?>#followers"><em class="fa-solid fa-users"></em> <?php echo $strings['followers'] ?></a> : <?php echo FollowersCount($userid) ?></h4>
                           </div>
                           <div class="col-md-5">
-                            <h4><a href="list.php?user=<?php echo $userid?>#followed"><i class="fa-solid fa-users"></i> <?php echo $strings['followed'] ?></a> : <?php echo FollowedCount($userid) ?></h4>
+                            <h4><a href="list.php?user=<?php echo $userid?>#followed"><em class="fa-solid fa-users"></em> <?php echo $strings['followed'] ?></a> : <?php echo FollowedCount($userid) ?></h4>
                           </div>
                         </div>
                         <?php
@@ -113,13 +113,13 @@ $strings = array(
                             echo '
                             <div class="col-4 col-lg-4">
                               <a href="'.$cfg->GetURL('modifyprofile').'" class="btn btn-primary btn-block">
-                              <i class="fa-solid fa-pencil"></i> '.$strings['modify_profile'].' </a>
+                              <em class="fa-solid fa-pencil"></em> '.$strings['modify_profile'].' </a>
                             </div>
                             <div class="col-4 col-lg-4">
                             </div>
                             <div class="col-4 col-lg-4">
                               <a href="'.$cfg->GetURL('dashboard').'#newPost" class="btn btn-primary btn-block">
-                              <i class="fa-solid fa-square-plus"></i> '.$strings['new_post_create'].' </a>
+                              <em class="fa-solid fa-square-plus"></em> '.$strings['new_post_create'].' </a>
                             </div>';
                           } elseif(IsFollower($userid)) {
                             echo '
@@ -128,7 +128,7 @@ $strings = array(
                                 <input type="hidden" name="myid" value="'.$_SESSION['userid'].'">
                                 <input type="hidden" name="userid" value="'.$userid.'">
                                 <button type="submit" class="btn btn-secondary btn-block form-check-label" id="unfollowBtn">
-                                  <i class="fa-solid fa-user"></i> '.$strings['unfollow'].'
+                                  <em class="fa-solid fa-user"></em> '.$strings['unfollow'].'
                                 </button>
                               </form>
                             </div>';
@@ -139,7 +139,7 @@ $strings = array(
                                 <input type="hidden" name="myid" value="'.$_SESSION['userid'].'">
                                 <input type="hidden" name="userid" value="'.$userid.'">
                                 <button type="submit" class="btn btn-primary btn-block form-check-label" id="followBtn">
-                                  <i class="fa-solid fa-user"></i> '.$strings['follow'].'
+                                  <em class="fa-solid fa-user"></em> '.$strings['follow'].'
                                 </button>
                               </form>
                             </div>';

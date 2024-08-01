@@ -24,7 +24,7 @@ if (!empty($c->user->GetSurname())) {
 		  <?php echo $fullname ?> 
       <span class="text-muted float-right">
         <?php if ($_SESSION['userid'] == $c->user->id): ?>
-          <button class="btn btn-tool" onclick="DeleteCommentButtonOnClick('<?php echo $c->id?>', '<?php echo $c->postid ?>')"><i class="fa-solid fa-xmark"></i></button>
+          <button class="btn btn-tool" onclick="DeleteCommentButtonOnClick('<?php echo $c->id?>', '<?php echo $c->postid ?>')"><em class="fa-solid fa-xmark"></em></button>
         <?php endif; ?>
         <?php echo $c->date ?>
       </span>

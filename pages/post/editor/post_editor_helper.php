@@ -32,8 +32,8 @@ $poststrings = array(
 );
 
 $posticons = array (
-	'create' => '<i class="fa-solid fa-square-plus"></i>',
-	'edit' => '<i class="fa-solid fa-pencil"></i>',
+	'create' => '<em class="fa-solid fa-square-plus"></em>',
+	'edit' => '<em class="fa-solid fa-pencil"></em>',
 );
 
 // Creates new post from form post data and sends it to the db, returns an exit code with the esit

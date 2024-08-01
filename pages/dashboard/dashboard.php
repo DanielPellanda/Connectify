@@ -21,6 +21,7 @@ $strings = array(
 	'header' => ' Home ',
 	'all_posts' => ' Tutti i Post ',
 	'priv_posts' => ' Post dei Seguiti ',
+	'placeholder_filter' => 'Filtra'
 );
 
 ?>
@@ -29,8 +30,8 @@ $strings = array(
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-	  <?php $cfg->PrintHeadTitle($_SESSION['context']) ?> 
-	  <?php $cfg->IncludeStylesheets() ?>
+	<?php $cfg->PrintHeadTitle($_SESSION['context']) ?> 
+	<?php $cfg->IncludeStylesheets() ?>
 	<script>
         let userId = "<?php echo $_SESSION['userid'] ?>";
 		let idList = {
@@ -54,14 +55,15 @@ $strings = array(
           <div class="container">
             <div class="row mb-2">
               <div class="col-7 col-md-9">
-                <h1 class="m-0"><?php echo ' '.$_SESSION['context'].' ' ?></h1>
+                <h3 class="m-0"><?php echo ' '.$_SESSION['context'].' ' ?></h3>
               </div>
-			        <div class="col-5 col-md-3">
-			  	      <select class="form-control" id="<?php echo $ids['filter'] ?>">
+			  <div class="col-5 col-md-3">
+				<label for="<?php echo $ids['filter'] ?>" hidden><?php echo $strings['placeholder_filter'] ?></label>
+			  	<select class="form-control" id="<?php echo $ids['filter'] ?>">
                   <option><?php echo $strings['all_posts'] ?></option>
                   <option><?php echo $strings['priv_posts'] ?></option>
                 </select>
-			        </div>
+			  </div>
             </div>
           </div>
         </div>

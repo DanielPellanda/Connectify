@@ -24,6 +24,8 @@ if (!isset($_SESSION['pfp']) || !is_file($_SESSION['pfp'])) {
 	$_SESSION['pfp'] = $cfg->GetURL('defaultpfp');
 }
 
+$alt_link = 'Indietro';
+
 // Initialize the editor
 require_once $cfg->GetAbsolutePath('posteditorhelp');
 
@@ -46,7 +48,7 @@ require_once $cfg->GetAbsolutePath('posteditorhelp');
             <div class="row mb-2">
               <div class="col-1">
                 <a href="<?php echo $cfg->GetURL('dashboard') ?>">
-                  <button class="btn btn-dark btn-block"><i class="fa-solid fa-arrow-left"></i></button>
+                  <button class="btn btn-dark btn-block"><em class="fa-solid fa-arrow-left"></em><p hidden><?php echo $alt_link ?></p></button>
                 </a>
               </div>  
               <div class="col-11">

@@ -1,8 +1,8 @@
 let postHelpPath = document.getElementsByTagName("script")[document.getElementsByTagName("script").length - 1].src;
 let postHelpDirectory = postHelpPath.replace(postHelpPath.split('/')[postHelpPath.split('/').length - 1],'');
 
-let likeOnIcon = '<i class="fa-solid fa-thumbs-up"></i>';
-let likeOffIcon = '<i class="fa-regular fa-thumbs-up"></i>';
+let likeOnIcon = '<em class="fa-solid fa-thumbs-up"></em>';
+let likeOffIcon = '<em class="fa-regular fa-thumbs-up"></em>';
 let likeHelperURL = 'post_likes.php';
 
 let editWarningTxt = 'Vuoi modificare questo post ?';
