@@ -44,7 +44,6 @@ $num_notifications = $cfg->db->getNotificationCount($_SESSION['userid'])[0]['num
 <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
    <div class="container">
      <a href="<?php echo $cfg->GetURL('dashboard') ?>" class="navbar-brand">
-	   <img src="<?php echo $icon_img ?>" alt="<?php echo $strs_nbar['alt_logo'] ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
        <span class="brand-text font-weight-light"><?php echo $cfg->GetFormattedTitle() ?></span>
      </a>
      <div class="navbar-collapse order-3">

@@ -4,8 +4,8 @@ require_once 'settings.php';
 
 class ConfigHelper {
 	
-	private $site_title='FakeBook';
-	private $formatted_title='<strong>Fake</strong>Book';
+	private $site_title='Connectify';
+	private $formatted_title='<strong>Connect</strong>ify';
 	
 	private $paths = array(
 		// Settings
